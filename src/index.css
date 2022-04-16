@@ -1,0 +1,194 @@
+/* Google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+  --dark-bg-color: hsl(207, 26%, 17%);
+  --article-color: hsl(209, 23%, 22%);
+  --text-color: hsl(0, 0%, 100%);
+  --light-mode-text: hsl(200, 15%, 8%);
+  --light-mode-input: hsl(0, 0%, 52%);
+  --light-mode-background: hsl(0, 0%, 98%);
+}
+
+/* re-useable style */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.btn {
+  background-color: var(--dark-bg-color);
+  padding: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
+  border: 2px solid var(--dark-bg-color);
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.btn:hover {
+  background-color: #fff;
+  color: var(--dark-bg-color);
+}
+
+.btn-light {
+  background-color: var(--article-color);
+  border: 2px solid var(--article-color);
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid  Sans', 'Helvetica Neue',
+    sans-serif;
+  background-color: var(--dark-bg-color);
+  color: var(--text-color);
+  transition: background-color 0.4s;
+  /* font-family: 'Nunito Sans', Sans-serif; */
+}
+
+/* =================header====================  */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #2b3743;
+  padding: 10px 20px;
+}
+
+/* =================filter====================  */
+.form {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.form input {
+  background: #2b3743;
+  outline: none;
+  border: none;
+  padding: 12px;
+  border-radius: 5px;
+  color: white;
+  font-family: inherit;
+  letter-spacing: 1.5px;
+  width: 100%;
+  margin: 0 0 15px;
+}
+
+.form input::placeholder {
+  color: #fff;
+}
+
+.form input:focus::placeholder {
+  color: #ffffffb0;
+}
+
+.form select {
+  background-color: #2b3743;
+  color: #fff;
+  font-family: inherit;
+  padding: 12px;
+  width: 200px;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+}
+
+/* =================grid====================  */
+.countries {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  padding: 10px 20px;
+}
+
+.countries article {
+  box-shadow: 0 10px 10px rgba(32, 45, 54, 0.8);
+}
+
+.countries article .flag {
+  border-radius: 5px 5px 0 0;
+  height: 300px;
+  width: 100%;
+  overflow: hidden;
+}
+.countries article .flag img {
+  width: 100%;
+  height: 100%;
+}
+.countries .details {
+  background-color: #2b3743;
+  padding: 20px;
+  margin-top: -10px;
+  border-radius: 0 0 5px 5px;
+}
+
+.countries .details h3 {
+  padding-bottom: 10px;
+}
+.countries .details h4 {
+  padding-bottom: 5px;
+}
+.countries .details h4 span {
+  font-weight: 300;
+}
+
+@media (min-width: 640px) {
+  .countries {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px;
+  }
+  .countries article .flag {
+    height: 280px;
+  }
+}
+
+@media (min-width: 768px) {
+  .header,
+  .form,
+  .countries {
+    padding: 10px 70px;
+  }
+  .form input {
+    width: 400px;
+    margin: 0;
+  }
+
+  .countries {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+  }
+  .countries article .flag {
+    height: 220px !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .header,
+  .form,
+  .countries {
+    padding: 20px 100px;
+  }
+  .countries {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 60px;
+  }
+  .countries article .flag {
+    height: 200px !important;
+  }
+}
