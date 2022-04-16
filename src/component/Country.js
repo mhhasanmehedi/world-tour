@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import '../country.css';
 
 const Country = () => {
   const { countryName } = useParams();
@@ -18,10 +19,10 @@ const Country = () => {
 
   return (
     <>
-      <Link to='/' className='btn btn-light'>
-        <i className='fas fa-arrow-left'></i>Back Home
-      </Link>
       <section className='country'>
+        <Link to='/' className='btn btn-light'>
+          <i className='fas fa-arrow-left'></i>Back Home
+        </Link>
         {country.map((c) => {
           const {
             name,
@@ -40,48 +41,51 @@ const Country = () => {
           return (
             <article key={nemericCode}>
               <div className='flag'>
-                <img src={flag} alt={name} />
+                {flag ? <img src={flag} alt={name} /> : 'No image'}
               </div>
 
               <div className='country-details'>
                 <h2>{name}</h2>
-                <div>
-                  <h5>
-                    Native Name: <span>{nativeName}</span>
-                  </h5>
-                  <h5>
-                    Population: <span>{population}</span>
-                  </h5>
-                  <h5>
-                    Region: <span>{region}</span>
-                  </h5>
-                  <h5>
-                    Sub Region: <span>{subregion}</span>
-                  </h5>
-                  <h5>
-                    Capital: <span>{capital}</span>
-                  </h5>
-                </div>
-                <div>
-                  <h5>
-                    Top Level Domain: <span>{topLevelDomain}</span>
-                  </h5>
-                  <h5>
-                    Languages: <span>{languages[0].name}</span>
-                  </h5>
-                  <h5>
-                    Currencies: <span>{currencies[0].name}</span>
-                  </h5>
-                </div>
-              </div>
+                <div className='country-details-top'>
+                  <div>
+                    <h5>
+                      Native Name: <span>{nativeName}</span>
+                    </h5>
+                    <h5>
+                      Population: <span>{population}</span>
+                    </h5>
+                    <h5>
+                      Region: <span>{region}</span>
+                    </h5>
+                    <h5>
+                      Sub Region: <span>{subregion}</span>
+                    </h5>
+                    <h5>
+                      Capital: <span>{capital}</span>
+                    </h5>
+                  </div>
 
-              <div>
-                <h3>
-                  Border Countries:
-                  {borders.map((b) => (
-                    <button>{b}</button>
-                  ))}
-                </h3>
+                  <div>
+                    <h5>
+                      Top Level Domain: <span>{topLevelDomain}</span>
+                    </h5>
+                    <h5>
+                      Languages: <span>{languages[0].name}</span>
+                    </h5>
+                    <h5>
+                      Currencies: <span>{currencies[0].name}</span>
+                    </h5>
+                  </div>
+                </div>
+
+                <div className='country-details-bottom'>
+                  <h3>Border Countries:</h3>
+                  <ul>
+                    {borders.map((b) => (
+                      <li key={b}>{b}</li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </article>
           );
