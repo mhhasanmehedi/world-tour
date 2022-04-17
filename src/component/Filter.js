@@ -41,7 +41,7 @@ const Filter = ({
   // filter by region
 
   useEffect(() => {
-    const filterRegions = async (region) => {
+    var filterRegions = async (region) => {
       const url = `https://restcountries.eu/rest/v2/region/${region}`;
       const res = await fetch(url);
       const data = await res.json();
