@@ -80,11 +80,15 @@ const Country = () => {
 
                 <div className='country-details-bottom'>
                   <h3>Border Countries:</h3>
-                  <ul>
-                    {borders.map((b) => (
-                      <li key={b}>{b}</li>
-                    ))}
-                  </ul>
+                  {borders ? (
+                    <ul>
+                      {borders.map((b) => (
+                        <li key={b}>{b}</li>
+                      ))}
+                    </ul>
+                  ) : (
+                    'no border area'
+                  )}
                 </div>
               </div>
             </article>

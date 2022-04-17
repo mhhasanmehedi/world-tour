@@ -1,6 +1,10 @@
 import React from 'react';
 
 const Header = () => {
+  const toggleLightTheme = () => {
+    document.body.classList.toggle('light-theme');
+  };
+
   return (
     <>
       <header className='header'>
@@ -8,7 +12,7 @@ const Header = () => {
           <h1>Where is the world?</h1>
         </div>
         <div>
-          <i className='fas fa-moon'></i>
+          <i className='fas fa-moon' onClick={() => toggleLightTheme()}></i>
         </div>
       </header>
     </>

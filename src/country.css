@@ -1,14 +1,19 @@
 .country {
-  padding: 50px;
+  padding: 10px 20px;
 }
 .country article .flag img {
   width: 100%;
   height: 100%;
 }
 
+.btn-light > i {
+  margin-right: 10px;
+}
+
 .btn-light {
   margin-bottom: 30px;
   display: inline-block;
+  box-shadow: 0 5px 20px hsla(200, 15%, 8%, 0.5);
 }
 .country-details h2 {
   letter-spacing: 1px;
@@ -38,6 +43,10 @@
   display: flex;
   flex-wrap: wrap;
 }
+body.light-theme .country-details-bottom ul li {
+  background-color: var(--light-mode-background);
+  color: var(--light-mode-text);
+}
 .country-details-bottom ul li {
   margin: 5px 10px;
   border-radius: 5px;
@@ -48,6 +57,15 @@
 }
 
 @media (min-width: 768px) {
+  .country {
+    padding: 10px 70px;
+  }
+}
+
+@media (min-width: 992px) {
+  .country {
+    padding: 20px 100px;
+  }
   .country article {
     display: flex;
     align-items: center;
@@ -55,10 +73,8 @@
   }
   .country article .flag {
     width: 40%;
-    /* height: 400px; */
   }
   .country-details {
     width: 50%;
-    /* padding-left: 20px; */
   }
 }
