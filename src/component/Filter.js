@@ -25,7 +25,7 @@ const Filter = ({
   const searchCountries = (searchValue) => {
     setSearchInput(searchValue);
 
-    if (searchValue) {
+    if (searchInput) {
       const filteredCountries = countries.filter((country) =>
         Object.value(country)
           .join()
@@ -48,7 +48,7 @@ const Filter = ({
 
   useEffect(() => {
     filterRegions();
-  }, []);
+  }, [regions]);
   return (
     <>
       <form className='form' id='form' onSubmit={handleSubmit}>
