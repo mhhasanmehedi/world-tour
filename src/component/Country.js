@@ -32,15 +32,12 @@ const Country = () => {
             const {
               name,
               ccn3,
-              nativeName,
               population,
               flags,
               region,
               subregion,
               capital,
               tld,
-              currencies,
-              languages,
               borders,
             } = c;
             return (
