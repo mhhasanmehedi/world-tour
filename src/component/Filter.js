@@ -27,8 +27,8 @@ const Filter = ({
 
     if (searchInput) {
       const filteredCountries = countries.filter((country) =>
-        Object.value(country)
-          .join()
+        Object.values(country)
+          .join('')
           .toLowerCase()
           .includes(searchValue.toLowerCase())
       );
@@ -40,15 +40,15 @@ const Filter = ({
 
   // filter by region
   const filterRegions = async (region) => {
-    const url = `https://restcountries.eu/rest/v2/region/${region}`;
+    const url = `https://restcountries.com/v3.1/region/${region}`;
     const res = await fetch(url);
     const data = await res.json();
     setCountries(data);
   };
 
-  useEffect(() => {
-    filterRegions();
-  }, [countries]);
+  // useEffect(() => {
+  //   filterRegions();
+  // }, []);
   return (
     <>
       <form className='form' id='form' onSubmit={handleSubmit}>
@@ -57,7 +57,6 @@ const Filter = ({
           name='search'
           placeholder='Search for a country...'
           id='search'
-          autocomplete='off'
           onChange={(e) => searchCountries(e.target.value)}
         />
 

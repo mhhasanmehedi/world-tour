@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Filter from './Filter';
 
-const url = 'https://restcountries.com/v2/all';
+const url = 'https://restcountries.com/v3.1/all';
 
 const Countries = () => {
   const [countries, setCountries] = useState([]);
@@ -21,10 +21,8 @@ const Countries = () => {
     fetchCountries();
   }, []);
 
-  const removeCountry = (numericCode) => {
-    const newCountry = countries.filter(
-      (country) => country.numericCode !== numericCode
-    );
+  const removeCountry = (ccn3) => {
+    const newCountry = countries.filter((country) => country.ccn3 !== ccn3);
     setCountries(newCountry);
   };
 
@@ -43,17 +41,16 @@ const Countries = () => {
       ) : searchInput.length > 1 ? (
         <section className='countries'>
           {countries.map((country) => {
-            const { numericCode, name, capital, population, region, flags } =
-              country;
+            const { ccn3, name, capital, population, region, flags } = country;
 
             return (
-              <article key={numericCode}>
+              <article key={ccn3}>
                 <div>
                   <div className='flag'>
                     <img src={flags.png} alt='{name}' />
                   </div>
                   <div className='details'>
-                    <h3>{name}</h3>
+                    <h3>{name.common}</h3>
                     <h4>
                       Population: <span>{population.toLocaleString()}</span>
                     </h4>
@@ -69,7 +66,7 @@ const Countries = () => {
                       </Link>
                       <button
                         className='btn'
-                        onClick={() => removeCountry(numericCode)}
+                        onClick={() => removeCountry(ccn3)}
                       >
                         Remove Country
                       </button>
@@ -83,17 +80,16 @@ const Countries = () => {
       ) : (
         <section className='countries'>
           {countries.map((country) => {
-            const { numericCode, name, capital, population, region, flags } =
-              country;
+            const { ccn3, name, capital, population, region, flags } = country;
 
             return (
-              <article key={numericCode}>
+              <article key={ccn3}>
                 <div>
                   <div className='flag'>
                     <img src={flags.png} alt='{name}' />
                   </div>
                   <div className='details'>
-                    <h3>{name}</h3>
+                    <h3>{name.common}</h3>
                     <h4>
                       Population: <span>{population.toLocaleString()}</span>
                     </h4>
@@ -104,12 +100,12 @@ const Countries = () => {
                       Capital: <span>{capital}</span>
                     </h4>
                     <div className='buttons'>
-                      <Link to={`/countries/${name}`} className='btn'>
+                      <Link to={`/countries/${name.common}`} className='btn'>
                         Learn More..
                       </Link>
                       <button
                         className='btn'
-                        onClick={() => removeCountry(numericCode)}
+                        onClick={() => removeCountry(ccn3)}
                       >
                         Remove Country
                       </button>

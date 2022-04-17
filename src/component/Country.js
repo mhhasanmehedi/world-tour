@@ -10,7 +10,7 @@ const Country = () => {
   useEffect(() => {
     const fetchCountryData = async () => {
       const response = await fetch(
-        `https://restcountries.com/v2/name/${countryName}`
+        `https://restcountries.com/v3.1/name/${countryName}`
       );
       const country = await response.json();
       setCountry(country);
@@ -31,33 +31,35 @@ const Country = () => {
           {country.map((c) => {
             const {
               name,
-              nemericCode,
+              ccn3,
               nativeName,
               population,
-              flag,
+              flags,
               region,
               subregion,
               capital,
-              topLevelDomain,
+              tld,
               currencies,
               languages,
               borders,
             } = c;
             return (
-              <article key={nemericCode}>
+              <article key={ccn3}>
                 <div className='flag'>
-                  {flag ? <img src={flag} alt={name} /> : 'No image'}
+                  {flags ? (
+                    <img src={flags.png} alt={name.common} />
+                  ) : (
+                    'No image'
+                  )}
                 </div>
 
                 <div className='country-details'>
-                  <h2>{name}</h2>
+                  <h2>{name.common}</h2>
                   <div className='country-details-top'>
                     <div>
+                      <h5>{/* Native Name: <span>{nativeName}</span> */}</h5>
                       <h5>
-                        Native Name: <span>{nativeName}</span>
-                      </h5>
-                      <h5>
-                        Population: <span>{population}</span>
+                        Population: <span>{population.toLocaleString()}</span>
                       </h5>
                       <h5>
                         Region: <span>{region}</span>
@@ -72,14 +74,12 @@ const Country = () => {
 
                     <div>
                       <h5>
-                        Top Level Domain: <span>{topLevelDomain}</span>
+                        Top Level Domain: <span>{tld}</span>
                       </h5>
                       <h5>
-                        Languages: <span>{languages[0].name}</span>
+                        {/* Languages: <span>{languages[0].name}</span> */}
                       </h5>
-                      <h5>
-                        Currencies: <span>{currencies[0].name}</span>
-                      </h5>
+                      <h5>{/* Currencies: <span>{currencies}</span> */}</h5>
                     </div>
                   </div>
 
