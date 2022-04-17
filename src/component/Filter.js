@@ -39,14 +39,14 @@ const Filter = ({
   };
 
   // filter by region
-  const filterRegions = async (region) => {
-    const url = `https://restcountries.eu/rest/v2/region/${region}`;
-    const res = await fetch(url);
-    const data = await res.json();
-    setCountries(data);
-  };
 
   useEffect(() => {
+    const filterRegions = async (region) => {
+      const url = `https://restcountries.eu/rest/v2/region/${region}`;
+      const res = await fetch(url);
+      const data = await res.json();
+      setCountries(data);
+    };
     filterRegions();
   }, [countries]);
   return (
