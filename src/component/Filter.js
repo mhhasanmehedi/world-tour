@@ -48,7 +48,7 @@ const Filter = ({
 
   useEffect(() => {
     filterRegions();
-  }, [regions]);
+  }, [filterRegions]);
   return (
     <>
       <form className='form' id='form' onSubmit={handleSubmit}>

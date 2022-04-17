@@ -31,6 +31,7 @@ const Countries = () => {
   return (
     <>
       <Filter
+        filtered={filtered}
         searchInput={searchInput}
         setSearchInput={setSearchInput}
         setFiltered={setFiltered}
