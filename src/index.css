@@ -102,6 +102,10 @@ body.light-theme {
   justify-content: center;
 }
 
+body.light-theme .loading i{
+  color: var(--dark-bg-color);
+}
+
 .loading i{
   color: white;
   font-size: 100px;  
