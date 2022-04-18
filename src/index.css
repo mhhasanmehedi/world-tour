@@ -131,8 +131,14 @@ body.light-theme .loading i{
   padding: 10px 20px;
 }
 
-.header .fa-moon {
+.header-right{
   cursor: pointer;
+}
+.header-right i{
+  margin-right: 6px;
+}
+.header-right span{
+  font-weight: lighter;
 }
 
 body.light-theme header {
