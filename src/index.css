@@ -26,7 +26,7 @@ ul {
 .buttons {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  margin-top: 10px;
 }
 
 body.light-theme .btn {
@@ -36,7 +36,12 @@ body.light-theme .btn {
 
 .btn {
   background-color: var(--dark-bg-color);
-  padding: 5px;
+  height: 40px;
+  width: 40px;
+  line-height: 40px;
+  text-align: center;
+  display: inline-block;
+  margin-right: 7px;
   cursor: pointer;
   text-decoration: none;
   color: white;
@@ -45,7 +50,27 @@ body.light-theme .btn {
   transition: background-color 0.2s;
 }
 
-.btn:hover {
+.back-btn{  
+  background-color: var(--dark-bg-color);
+  padding: 10px;  
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
+  border: 1px solid var(--dark-bg-color);
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+.back-btn i{
+  margin-right: 7px;
+}
+
+body.light-theme .btn:hover,body.light-theme .back-btn{  
+  color: white;
+  background-color: var(--dark-bg-color);
+}
+
+.btn:hover,.back-btn:hover {
   background-color: #fff;
   color: var(--dark-bg-color);
 }
@@ -67,6 +92,30 @@ body {
 body.light-theme {
   background-color: var(--light-mode-background);
   color: var(--light-mode-text);
+}
+
+.loading{
+  height: 70vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading i{
+  color: white;
+  font-size: 100px;  
+  animation: spinner 2s linear infinite;
+}
+
+@keyframes spinner {
+  0%{
+  transform: rotate(0deg);
+  }
+  100%{
+    
+  transform: rotate(360deg);
+  }
 }
 
 /* =================header====================  */
@@ -213,6 +262,6 @@ body.light-theme .countries article {
     gap: 60px;
   }
   .countries article .flag {
-    height: 200px !important;
+    height: 150px !important;
   }
 }

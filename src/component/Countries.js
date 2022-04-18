@@ -37,7 +37,9 @@ const Countries = () => {
         countries={countries}
       />
       {isLoading ? (
-        <h1>Loading...</h1>
+        <div className='loading'>
+          <i class="fa-solid fa-spinner"></i>    
+        </div>
       ) : searchInput.length > 1 ? (
         <section className='countries'>
           {countries.map((country) => {
@@ -62,13 +64,12 @@ const Countries = () => {
                     </h4>
                     <div className='buttons'>
                       <Link to={`/countries/${name}`} className='btn'>
-                        Learn More..
+                        <i class="fa-solid fa-angles-right"></i>
                       </Link>
                       <button
                         className='btn'
                         onClick={() => removeCountry(ccn3)}
-                      >
-                        Remove Country
+                      ><i class="fa-solid fa-trash"></i>
                       </button>
                     </div>
                   </div>
@@ -101,13 +102,12 @@ const Countries = () => {
                     </h4>
                     <div className='buttons'>
                       <Link to={`/countries/${name.common}`} className='btn'>
-                        Learn More..
+                        <i class="fa-solid fa-angles-right"></i>
                       </Link>
                       <button
                         className='btn'
                         onClick={() => removeCountry(ccn3)}
-                      >
-                        Remove Country
+                      ><i class="fa-solid fa-trash"></i>
                       </button>
                     </div>
                   </div>

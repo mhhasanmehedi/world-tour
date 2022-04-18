@@ -25,7 +25,7 @@ const Country = () => {
           <title>World Tour || Details page</title>
         </Helmet>
         <section className='country'>
-          <Link to='/' className='btn btn-light'>
+          <Link to='/' className='back-btn'>
             <i className='fas fa-arrow-left'></i>Back Home
           </Link>
           {country.map((c) => {
