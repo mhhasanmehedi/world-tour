@@ -5,7 +5,8 @@ import '../country.css';
 
 const Country = () => {
   const { countryName } = useParams();
-  const [country, setCountry] = useState([]);
+  const [country, setCountry] = useState([]);  
+  const [isLoading, setIsLoading] = useState([true]);
 
   useEffect(() => {
     const fetchCountryData = async () => {
@@ -14,6 +15,7 @@ const Country = () => {
       );
       const country = await response.json();
       setCountry(country);
+      setIsLoading(false);
     };
     fetchCountryData();
   }, [countryName]);
@@ -28,74 +30,85 @@ const Country = () => {
           <Link to='/' className='back-btn'>
             <i className='fas fa-arrow-left'></i>Back Home
           </Link>
-          {country.map((c) => {
-            const {
-              name,
-              ccn3,
-              population,
-              flags,
-              region,
-              subregion,
-              capital,
-              tld,
-              borders,
-            } = c;
-            return (
-              <article key={ccn3}>
-                <div className='flag'>
-                  {flags ? (
-                    <img src={flags.png} alt={name.common} />
-                  ) : (
-                    'No image'
-                  )}
-                </div>
-
-                <div className='country-details'>
-                  <h2>{name.common}</h2>
-                  <div className='country-details-top'>
-                    <div>
-                      <h5>{/* Native Name: <span>{nativeName}</span> */}</h5>
-                      <h5>
-                        Population: <span>{population.toLocaleString()}</span>
-                      </h5>
-                      <h5>
-                        Region: <span>{region}</span>
-                      </h5>
-                      <h5>
-                        Sub Region: <span>{subregion}</span>
-                      </h5>
-                      <h5>
-                        Capital: <span>{capital}</span>
-                      </h5>
-                    </div>
-
-                    <div>
-                      <h5>
-                        Top Level Domain: <span>{tld}</span>
-                      </h5>
-                      <h5>
-                        {/* Languages: <span>{languages[0].name}</span> */}
-                      </h5>
-                      <h5>{/* Currencies: <span>{currencies}</span> */}</h5>
-                    </div>
-                  </div>
-
-                  <div className='country-details-bottom'>
-                    <h3>Border Countries:</h3>
-                    {borders ? (
-                      <ul>
-                        {borders.map((b) => (
-                          <li key={b}>{b}</li>
-                        ))}
-                      </ul>
+          {
+            isLoading ? (
+              <div className='loading'>
+                <i class="fa-solid fa-spinner"></i>    
+              </div>
+            )
+           : country ? (
+            <>
+            {country.map((c) => {
+              const {
+                name,
+                ccn3,
+                population,
+                flags,
+                region,
+                subregion,
+                capital,
+                tld,
+                borders,
+              } = c;
+              return (
+                <article key={ccn3}>
+                  <div className='flag'>
+                    {flags ? (
+                      <img src={flags.png} alt={name.common} />
                     ) : (
-                      'no border area'
+                      'No image'
                     )}
                   </div>
-                </div>
-              </article>
-            );
-          })}
+  
+                  <div className='country-details'>
+                    <h2>{name.common}</h2>
+                    <div className='country-details-top'>
+                      <div>
+                        <h5>{/* Native Name: <span>{nativeName}</span> */}</h5>
+                        <h5>
+                          Population: <span>{population.toLocaleString()}</span>
+                        </h5>
+                        <h5>
+                          Region: <span>{region}</span>
+                        </h5>
+                        <h5>
+                          Sub Region: <span>{subregion}</span>
+                        </h5>
+                        <h5>
+                          Capital: <span>{capital}</span>
+                        </h5>
+                      </div>
+  
+                      <div>
+                        <h5>
+                          Top Level Domain: <span>{tld}</span>
+                        </h5>
+                        <h5>
+                          {/* Languages: <span>{languages[0].name}</span> */}
+                        </h5>
+                        <h5>{/* Currencies: <span>{currencies}</span> */}</h5>
+                      </div>
+                    </div>
+  
+                    <div className='country-details-bottom'>
+                      <h3>Border Countries:</h3>
+                      {borders ? (
+                        <ul>
+                          {borders.map((b) => (
+                            <li key={b}>{b}</li>
+                          ))}
+                        </ul>
+                      ) : (
+                        'no border area'
+                      )}
+                    </div>
+                  </div>
+                </article>
+              );
+            })}
+            </>
+          ): ""}
+          
         </section>
       </>
     </>

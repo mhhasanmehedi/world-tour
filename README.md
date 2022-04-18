@@ -2,4 +2,5 @@
 
 Live Link: [https://world-to-ur.netlify.app/](https://world-to-ur.netlify.app/).
 
-## Welcome
+## For Git Clone : 
+> git clone https://github.com/mhhasanmehedi/world-tour.git
